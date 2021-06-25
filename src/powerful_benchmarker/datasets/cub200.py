@@ -10,6 +10,7 @@ import os
 import tarfile
 from ..utils import common_functions as c_f
 
+
 class CUB200(Dataset):
     url = 'https://drive.google.com/uc?id=1hbzc_P1FuxMkcabkgn9ZKinBwW683j45'
     filename = 'CUB_200_2011.tgz'
@@ -53,5 +54,4 @@ class CUB200(Dataset):
             gdown.download(self.url, output_location, quiet=False)
             assert_md5sum(output_location, self.md5)
         with tarfile.open(output_location, "r:gz") as tar:
-            tar.extractall(path=self.root, members = c_f.extract_progress(tar))
-            
+            tar.extractall(path=self.root, members=c_f.extract_progress(tar))
